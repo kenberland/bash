@@ -1,0 +1,1 @@
+GR_CONTROL_GROUP="ken@grandroundshealth.com bashir@grandroundshealth.com brett@grandroundshealth.com david.thompson@consultingmd.com justin@grandroundshealth.com kevin.moore@grandroundshealth.com rick@grandroundshealth.com"
