@@ -31,8 +31,5 @@ alias sssh='ssh -C -A ken@hero.com'
 alias syslogs='tail -f /var/log/syslog'
 alias p='ps -ef | grep -i '
 alias gpg='gpg --use-agent'
-settitle() {
-    export PROMPT_COMMAND='echo -ne "\033]0;${1}\007"'
-}
 alias copy='xsel -ib'
 alias paste='xsel -b'

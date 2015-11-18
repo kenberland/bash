@@ -34,5 +34,6 @@ prompt_function() {
     git_color="${RED}"
   fi
   PS1="${RESET}\u@\h: \w${git_color}$(__git_ps1)${RESET}\$ "
+  history -a
 }
 PROMPT_COMMAND=prompt_function
