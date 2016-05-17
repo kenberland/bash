@@ -16,6 +16,7 @@ alias tidy='find * .* -prune \( -name "*~" -o -name ".*~" -o -name "%*" -o -name
 alias ls='ls --color'
 alias lll='ls -ltra|tail'
 alias tsl='tail -f /var/log/syslog'
+alias more='less'
 #alias emacs='emacs -nw \!*'
 #alias h='history | grep \!*'
 #alias mysql='mysql -p6fjeUjdn'
