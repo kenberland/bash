@@ -1,0 +1,26 @@
+(setq user-full-name    "Kenneth Berland"
+      user-mail-address "ken@hero.com"
+      mail-host-address '"mail.hero.com")
+
+(setq load-path (append '("~/.emacs.d" "~/.emacs.d/lib") load-path))
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
+(let (files)
+  (dolist (filename (file-expand-wildcards "~/.emacs.d/*.el*") files)
+    (when (file-regular-p filename)
+      (add-to-list 'files (file-name-sans-extension filename))))
+  (dolist (filename files)
+    (load-library filename)))
+
+;; (custom-set-variables
+;;  '(case-fold-search t)
+;;  '(compilation-scroll-output t)
+;;  '(current-language-environment "UTF-8")
+;;  '(default-input-method "latin-1-prefix")
+;;  '(flymake-gui-warnings-enabled nil)
+;;  '(flymake-mode nil t)
+;;  '(flymake-start-syntax-check-on-find-file t)
+;;  '(flymake-start-syntax-check-on-newline nil))
+
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
