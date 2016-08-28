@@ -9,4 +9,4 @@ for file in $(\ls -1 ${HOME}/bash/*.sh); do
   source $file;
 done
 
-export PATH=${PATH}:${GR_HOME}/engineering/bin
+export PATH=${PATH}:${GR_HOME}/engineering/bin:${GR_HOME}/engineering/bin/x86_64
