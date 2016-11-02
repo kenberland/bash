@@ -2,7 +2,7 @@
       user-mail-address "ken@hero.com"
       mail-host-address '"mail.hero.com")
 
-(setq load-path (append '("~/.emacs.d" "~/.emacs.d/lib") load-path))
+(setq load-path (append '("~/.emacs.d/lib") load-path))
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 (let (files)
