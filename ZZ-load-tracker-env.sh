@@ -1,4 +1,4 @@
 if [ -t 1 ]
 then
-    tracker-environment
+    export NO_TRACKER_ENV=
 fi

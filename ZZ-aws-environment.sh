@@ -1,6 +1,6 @@
 if [ -t 1 ]
 then
-    # no default aws-environment set
+    export AWS_ENVIRONMENT=
 fi
 
 function aws-environment {
