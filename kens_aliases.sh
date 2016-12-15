@@ -13,7 +13,13 @@ export EDITOR=emacs
 #bindkey ^Z run-fg-editor
 
 alias tidy='find * .* -prune \( -name "*~" -o -name ".*~" -o -name "%*" -o -name "*%" -o -name ".*%" -o -name "#*#"  -o -name "core" \) -exec rm {} \; -print'
-alias ls='ls --color'
+DARWIN=$(uname -a | grep -c Darwin)
+if [[ $DARWIN == "1" ]]
+then
+    alias ls='ls -G'
+else
+    alias ls='ls --color'
+fi
 alias lll='ls -ltra|tail'
 alias tsl='tail -f /var/log/syslog'
 alias more='less'
