@@ -1,1 +1,5 @@
-source $HOME/.rvm/scripts/rvm
+RVM_SCRIPT=$HOME/.rvm/scripts/rvm
+
+if [ -x "$RVM_SCRIPT" ]; then
+    source ${RVM_SCRIPT}
+fi
