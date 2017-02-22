@@ -45,6 +45,7 @@
  ;; If there is more than one, they won't work right.
  '(font-lock-function-name-face ((t (:foreground "color-27"))))
  '(isearch-fail ((t (:background "red"))))
+ '(lazy-highlight ((t (:background "color-19"))))
  '(match ((t (:background "color-106"))))
  '(region ((t (:background "color-22")))))
 
