@@ -3,6 +3,12 @@ then
     export AWS_ENVIRONMENT=
 fi
 
+GPG=$(which gpg2)
+
+if ! [ -x "$GPG" ]; then
+    GPG=gpg
+fi
+
 function aws-environment {
     local env_file="${HOME}/.aws-creds/${1}.gpg"
     if [ -z "$1" ];
@@ -18,7 +24,7 @@ function aws-environment {
 	echo ${1}
 	export AWS_ENVIRONMENT=$1
 	source /dev/stdin <<EOF
-$(gpg --no-tty --quiet -o - ${env_file})
+$(${GPG} --no-tty --quiet -o - ${env_file})
 EOF
     fi
 }
