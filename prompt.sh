@@ -33,7 +33,8 @@ prompt_function() {
   else
     git_color="${RED}"
   fi
-  PS1="${RESET}\u@\h: \w${git_color}$(__git_ps1)${RESET}\$ "
+  SHORT_HOST=$(hostname | head -c6)
+  PS1="${RESET}\u@${SHORT_HOST}: \w${git_color}$(__git_ps1)${RESET}\$ "
   history -a
 }
 PROMPT_COMMAND=prompt_function
