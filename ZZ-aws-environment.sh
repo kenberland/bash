@@ -24,7 +24,7 @@ function aws-environment {
 	echo ${1}
 	export AWS_ENVIRONMENT=$1
 	source /dev/stdin <<EOF
-$(${GPG} --no-tty --quiet -o - ${env_file})
+$(${GPG} --use-agent --no-tty --quiet -o - ${env_file})
 EOF
     fi
 }

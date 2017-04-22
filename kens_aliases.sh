@@ -1,21 +1,7 @@
 export EDITOR=emacs
-#export EC2_HOME=/home/ken/ec2-api-tools
-#export PATH=${PATH}:${EC2_HOME}/bin
-#export EC2_PRIVATE_KEY=~/.ec2/pk.pem
-#export EC2_CERT=~/.ec2/cert.pem
-#export EC2_PRIVATE_KEY ~/.ec2/pk-U2CJWUZP3E4S2SAJBJ5P5BONVLBFFV3H.pem
-#export EC2_CERT ~/.ec2/cert-U2CJWUZP3E4S2SAJBJ5P5BONVLBFFV3H.pem
-#export JAVA_HOME=/usr
-#export JAVA_OPTS "-Dsolr.solr.home=/home/ken/fun/Funambol/tools/tomcat/solr"
-
-
-
 #bindkey ^Z run-fg-editor
-
 alias tidy='find * .* -prune \( -name "*~" -o -name ".*~" -o -name "%*" -o -name "*%" -o -name ".*%" -o -name "#*#"  -o -name "core" \) -exec rm {} \; -print'
-DARWIN=$(uname -a | grep -c Darwin)
-if [[ $DARWIN == "1" ]]
-then
+if [[ `uname` == Darwin ]]; then
     alias ls='ls -G'
 else
     alias ls='ls --color'
