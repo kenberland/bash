@@ -1,0 +1,1 @@
+export PATH=$PATH:/apollo/package/local_1/Generic/Kcurl/Kcurl-54.0-0/bin:/apollo/env/OdinTools/bin/
