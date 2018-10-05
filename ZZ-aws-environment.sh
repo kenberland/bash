@@ -9,6 +9,8 @@ if ! [ -x "$GPG" ]; then
     GPG=gpg
 fi
 
+GPG=gpg # just use this for now
+
 function aws-environment {
     local env_file="${HOME}/.aws-creds/${1}.gpg"
     if [ -z "$1" ];
