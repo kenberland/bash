@@ -29,3 +29,10 @@ alias paste='xsel -b'
 alias last-arg='echo $(ls -1tr | tail -1)'
 alias desktop='ssh u64510630b31d58af5430.ant.amazon.com'
 alias cloud='ssh berlandk.aka.corp.amazon.com'
+
+cifinder () {
+    find . -type f -iname \*$@\*
+}
+export -f cifinder
+
+alias more='less'
