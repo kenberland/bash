@@ -1,0 +1,1 @@
+export PATH=$BRAZIL_CLI_BIN:$PATH
