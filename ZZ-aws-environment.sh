@@ -3,13 +3,7 @@ then
     export AWS_ENVIRONMENT=
 fi
 
-GPG=$(which gpg2)
-
-if ! [ -x "$GPG" ]; then
-    GPG=gpg
-fi
-
-GPG=gpg # just use this for now
+GPG=$(which gpg)
 
 function aws-environment {
     local env_file="${HOME}/.aws-creds/${1}.gpg"
