@@ -9,6 +9,7 @@ fi
 alias lll='ls -ltra|tail'
 alias tsl='tail -f /var/log/syslog'
 alias more='less'
+alias less='most'
 #alias emacs='emacs -nw \!*'
 #alias h='history | grep \!*'
 #alias mysql='mysql -p6fjeUjdn'
@@ -36,3 +37,8 @@ cifinder () {
 export -f cifinder
 
 alias more='less'
+alias manifest-json-to-xml='jq -r ".contentResponseList[].manifest" response.json  > manifest.xml'
+#alias big-fonts='gsettings set org.gnome.desktop.interface text-scaling-factor 1.5'
+#alias little-fonts='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'
+alias big-fonts='xfconf-query -c xsettings -p /Xft/DPI -s 128'
+alias little-fonts='xfconf-query -c xsettings -p /Xft/DPI -s 96'

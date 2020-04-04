@@ -1,1 +1,1 @@
-export PATH=$PATH:$HOME/chromium/depot_tools
+export PATH=$PATH:$HOME/depot_tools
