@@ -1,4 +1,4 @@
-export PYENV_ROOT="$HOME/.pyenv"
+#export PYENV_ROOT="$HOME/.pyenv"
 
 if [ -x "$PYENV_ROOT" ]; then
     export PATH=$PYENV_ROOT/bin:$PATH

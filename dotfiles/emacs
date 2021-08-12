@@ -37,17 +37,27 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (git-gutter))))
+ '(package-selected-packages (quote (vue-mode typescript git-gutter))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(font-lock-function-name-face ((t (:foreground "color-27"))))
+ '(font-lock-string-face ((t (:foreground "color-127"))))
  '(isearch-fail ((t (:background "red"))))
  '(lazy-highlight ((t (:background "color-19"))))
  '(match ((t (:background "color-106"))))
+ '(mmm-default-submode-face ((t (:background "color-238"))))
  '(region ((t (:background "color-22")))))
 
 ;; make the minibuffer not invisible blue
 (set-face-foreground 'minibuffer-prompt "white")
+
+(setq typescript-indent-level 2)
+
+(require 'package)
+(add-to-list 'package-archives '("melpa-stable" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(package-initialize)
+
