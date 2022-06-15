@@ -1,3 +1,5 @@
+alias jester='ssh harleybuild@jester.aka.corp.amazon.com'
+
 #export NDK=${HOME}/android-ndk-r17b
 #export PATH=${HOME}/android-studio/bin:${PATH}
 #export PATH=${HOME}/Android/Sdk/platform-tools:${PATH}

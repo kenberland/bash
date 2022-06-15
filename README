@@ -1,0 +1,5 @@
+gio mime x-scheme-handler/https google-chrome.desktop
+gio mime x-scheme-handler/http google-chrome.desktop
+xdg-mime default google-chrome.desktop text/html
+xdg-settings set default-web-browser google-chrome.desktop
+
