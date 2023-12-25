@@ -1,2 +1,2 @@
-export LS_COLORS='di=0;96:'
+export LS_COLORS='di=0;34;47'
 
