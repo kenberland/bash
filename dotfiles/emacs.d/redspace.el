@@ -1,2 +1,0 @@
-(load "redspace")
-(redspace-mode)
