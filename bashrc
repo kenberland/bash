@@ -1,6 +1,3 @@
-for file in $(\ls -1 ${HOME}/bash/*.sh); do
-  source $file;
-done
 if [ -z ${PASS+x} ]; then
   echo "Second home password is not set."
 else
@@ -10,3 +7,7 @@ else
   done
   unset PASS
 fi
+
+for file in $(\ls -1 ${HOME}/bash/*.sh); do
+  source $file;
+done

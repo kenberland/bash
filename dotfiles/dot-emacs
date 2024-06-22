@@ -1,0 +1,84 @@
+;; for el-get
+(add-to-list 'load-path (expand-file-name "el-get/el-get" user-emacs-directory))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+(el-get 'sync)
+
+;; for straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+	"straight/repos/straight.el/bootstrap.el"
+	(or (bound-and-true-p straight-base-dir)
+	    user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+	(url-retrieve-synchronously
+	 "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+	 'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
+
+;; Standard Jedi.el setting
+(use-package jedi)
+(setq jedi:complete-on-dot t)
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'jedi:setup)
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(font-lock-function-name-face ((t (:foreground "brightblue"))))
+ '(font-lock-string-face ((t (:foreground "color-171")))))
+
+(require 'ido) (ido-mode t)
+(setq column-number-mode t)
+
+;; backup files and cleaning
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+   (let ((dir "~/.saves/"))
+     (setq auto-save-file-name-transforms `(("\\([^/]*/\\)*\\([^/]*\\)\\'" ,(concat dir "/\\2")))
+           backup-directory-alist `((".*" . ,dir))))
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
+
+;; Cycle between snake case, camel case, etc.
+(use-package string-inflection)
+(global-set-key (kbd "C-c i") 'string-inflection-cycle)
+
+(use-package git-gutter
+  :hook (prog-mode . git-gutter-mode)
+  :config
+  (setq git-gutter:update-interval 0.02))
+
+;; (use-package redspace-mode
+;;   :hook (prog-mode . redspace-mode))
+
+(use-package python-black
+  :hook (python-mode . python-black-on-save-mode)
+  :demand t
+  :after python)
+
+(setq python-indent-offset 4)
+
+(use-package copilot
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+  :ensure t)
+;; you can utilize :map :hook and :config to customize copilot
+(add-hook 'python-mode-hook 'copilot-mode)
+(global-set-key "" 'copilot-accept-completion)
+

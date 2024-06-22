@@ -6,7 +6,6 @@ if [[ `uname` == Darwin ]]; then
 else
     alias ls='ls --color'
 fi
-alias lll='ls -ltra|tail'
 alias tsl='tail -f /var/log/syslog'
 alias more='less'
 #alias less='most'
@@ -16,7 +15,6 @@ alias more='less'
 #alias mysqladmin='mysqladmin -p6fjeUjdn'
 #alias mysqldump='mysqldump -p6fjeUjdn'
 #alias pine='alpine -i'
-alias ll='ls -ltr | tail -30'
 #alias search='rm -rf $HOME/mail/mairix/*; mairix -v \!*;alpine -i -f mairix'
 alias sssh='ssh -C -A ken@hero.net'
 #alias bud 'ssh -C ideabud@localhost'
@@ -42,3 +40,5 @@ alias manifest-json-to-xml='jq -r ".contentResponseList[].manifest" response.jso
 #alias little-fonts='gsettings set org.gnome.desktop.interface text-scaling-factor 1.0'
 alias big-fonts='xfconf-query -c xsettings -p /Xft/DPI -s 128'
 alias little-fonts='xfconf-query -c xsettings -p /Xft/DPI -s 96'
+
+function ll () { ls -ltr $@; }
