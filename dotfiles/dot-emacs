@@ -82,3 +82,14 @@
 (add-hook 'python-mode-hook 'copilot-mode)
 (global-set-key "" 'copilot-accept-completion)
 
+(defun my-list-buffers (&optional arg)
+"Display a list of existing buffers.
+The list is displayed in a buffer named \"*Buffer List*\".
+See `buffer-menu' for a description of the Buffer Menu.
+By default, all buffers are listed except those whose names start
+with a space (which are for internal use).  With prefix argument
+ARG, show only buffers that are visiting files."
+  (interactive "P")
+  (switch-to-buffer (list-buffers-noselect arg)))
+
+(define-key ctl-x-map "\C-b" 'my-list-buffers)
