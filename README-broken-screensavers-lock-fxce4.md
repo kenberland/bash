@@ -29,6 +29,7 @@ https://askubuntu.com/questions/1383379/xubuntu-desktop-visible-after-suspend-be
 - compile settings without upower-glib, restart xfsettingsd
 
 ```
+sudo apt-get build-dep xfce4-settings
 ./configure --build=x86_64-linux-gnu --prefix=/usr '--includedir=${prefix}/include' '--mandir=${prefix}/share/man' '--infodir=${prefix}/share/info' --sysconfdir=/etc --localstatedir=/var --disable-option-checking --disable-silent-rules '--libdir=${prefix}/lib/x86_64-linux-gnu' --runstatedir=/run --disable-maintainer-mode --disable-dependency-tracking --enable-colord --enable-libnotify --enable-libxklavier --enable-pluggable-dialogs --enable-sound-settings --enable-xcursor --with-helper-path-prefix=/usr/share --disable-upower-glib
 ```
 
