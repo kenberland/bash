@@ -93,3 +93,4 @@ ARG, show only buffers that are visiting files."
   (switch-to-buffer (list-buffers-noselect arg)))
 
 (define-key ctl-x-map "\C-b" 'my-list-buffers)
+(add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
