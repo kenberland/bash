@@ -44,17 +44,23 @@
 (require 'ido) (ido-mode t)
 (setq column-number-mode t)
 
-;; backup files and cleaning
-(setq
-   backup-by-copying t      ; don't clobber symlinks
-   backup-directory-alist
-   (let ((dir "~/.saves/"))
-     (setq auto-save-file-name-transforms `(("\\([^/]*/\\)*\\([^/]*\\)\\'" ,(concat dir "/\\2")))
-           backup-directory-alist `((".*" . ,dir))))
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)       ; use versioned backups
+;; Put backup files neatly away
+(let ((backup-dir "~/tmp/emacs/backups")
+      (auto-saves-dir "~/tmp/emacs/auto-saves/"))
+  (dolist (dir (list backup-dir auto-saves-dir))
+    (when (not (file-directory-p dir))
+      (make-directory dir t)))
+  (setq backup-directory-alist `(("." . ,backup-dir))
+        auto-save-file-name-transforms `((".*" ,auto-saves-dir t))
+        auto-save-list-file-prefix (concat auto-saves-dir ".saves-")
+        tramp-backup-directory-alist `((".*" . ,backup-dir))
+        tramp-auto-save-directory auto-saves-dir))
+
+(setq backup-by-copying t    ; Don't delink hardlinks
+      delete-old-versions t  ; Clean up the backups
+      version-control t      ; Use version numbers on backups,
+      kept-new-versions 5    ; keep some new versions
+      kept-old-versions 2)   ; and some old ones, too
 
 ;; Cycle between snake case, camel case, etc.
 (use-package string-inflection)
@@ -82,6 +88,10 @@
 (add-hook 'python-mode-hook 'copilot-mode)
 (global-set-key "" 'copilot-accept-completion)
 
+(use-package copilot-chat
+  :straight (:host github :repo "chep/copilot-chat.el" :files ("*.el"))
+  :after (request org markdown-mode))
+
 (defun my-list-buffers (&optional arg)
 "Display a list of existing buffers.
 The list is displayed in a buffer named \"*Buffer List*\".
@@ -94,3 +104,21 @@ ARG, show only buffers that are visiting files."
 
 (define-key ctl-x-map "\C-b" 'my-list-buffers)
 (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
+(straight-use-package 'yapfify)
+;; (add-hook 'python-mode-hook 'yapf-mode)
+(straight-use-package '(codeium :type git :host github :repo "Exafunction/codeium.el"))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(codeium/metadata/api_key "31d23123-8bad-4f60-be7c-c4f6ab502195"))
+;; we recommend using use-package to organize your init.el
+(add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
+(setq create-lockfiles nil)
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode)
+  :config
+  (setq-default flycheck-flake8-maximum-line-length 88))
+

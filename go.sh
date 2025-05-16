@@ -1,1 +1,1 @@
-export PATH=$HOME/go/bin:$PATH
+export PATH=$HOME/golang/bin:$HOME/go/bin:$PATH
